@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    tools{
+     jdk 'Java17'
+    }
+    stages {
+        stage('Clean workspace and Navigate to the folder'){
+            steps{
+                cleanWs()
+                bat 'copy C:\\\\Users\\\\Lenovo\\\\Desktop\\\\Vishvaja "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Pipeline Java  Code"'
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'javac Pattern.java'
+            }
+        }
+        stage('Run') {
+            steps {
+                bat 'java Pattern'
+            }
+        }
+    }
+}
