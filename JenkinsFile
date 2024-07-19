@@ -7,7 +7,7 @@ pipeline {
         stage('Clean workspace and Navigate to the folder'){
             steps{
                 cleanWs()
-                bat 'copy C:\\\\Users\\\\Lenovo\\\\Desktop\\\\Vishvaja "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Pipeline Java  Code"'
+                bat 'copy C:\\\\Users\\\\Lenovo\\\\Desktop\\\\Vishvaja "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\SCM pipeline java code"'
             }
         }
         stage('Build') {
