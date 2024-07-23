@@ -7,18 +7,29 @@ pipeline {
         stage('Clean workspace and Navigate to the folder'){
             steps{
                 cleanWs()
-                bat 'copy C:\\\\Users\\\\Lenovo\\\\Desktop\\\\Vishvaja "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\SCM pipeline java code"'
+                bat 'copy C:\\\\Users\\\\Lenovo\\\\Desktop\\\\JenkinsDemo "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\SCM pipeline java code"'
             }
         }
-        stage('Build') {
+    stage('Build') {
             steps {
                 bat 'javac Pattern.java'
             }
         }
+        stage('Jar') {
+            steps {
+                bat 'jar cfe myJar.jar Pattern Pattern.class'
+            }
+        }
         stage('Run') {
             steps {
-                bat 'java Pattern'
+                bat 'java -jar myJar.jar'
+            }
+        }
+        stage('Artifact'){
+            steps{
+                archiveArtifacts artifacts: '*.jar', followSymlinks: false
             }
         }
     }
 }
+       
